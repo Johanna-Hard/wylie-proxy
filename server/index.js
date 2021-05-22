@@ -17,6 +17,11 @@ app.get('/rooms/:id', function(req, res) {
 });
 
 //carsonService
+app.get('/calendarwidget.js', function(req, res) {
+  console.log('Request carsonService', req.method, req.url);
+  proxy.web(req, res, {target: carsonService});
+});
+
 app.get('/listings/:listingId', function(req, res) {
   console.log('Request carsonService', req.method, req.url);
   proxy.web(req, res, {target: carsonService});
@@ -33,12 +38,22 @@ app.get('/bookings/:listingId', function(req, res) {
 });
 
 //yosepService
+app.get('/hostedBy.js', function(req, res) {
+  console.log('Request yosepService', req.method, req.url);
+  proxy.web(req, res, {target: yosepService});
+});
+
 app.all('/api/hostedBy/:id', function(req, res) {
   console.log('Request yosepService', req.method, req.url);
   proxy.web(req, res, {target: yosepService});
 });
 
 //wylieService
+app.get('/photos.js', function(req, res) {
+  console.log('Request wylieService', req.method, req.url);
+  proxy.web(req, res, {target: wylieService});
+});
+
 app.get('/photos/:listingId', function(req, res) {
   console.log('Request wylieService', req.method, req.url);
   proxy.web(req, res, {target: wylieService});
